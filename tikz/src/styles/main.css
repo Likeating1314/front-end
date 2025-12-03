@@ -116,10 +116,12 @@ body {
 
 /* 主内容区域 */
 .main-content {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
   padding: 30px 20px;
-  min-height: calc(100vh - 140px);
+  min-height: calc(100vh - 100px);
+  flex: 1;
 }
 
 /* 响应式设计 */

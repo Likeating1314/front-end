@@ -1,21 +1,9 @@
 <template>
   <div class="home-page">
-    <!-- 头部 -->
-    <div class="header">
-      <div class="wrapper">
-        <div class="logo">
-          <h2>AI Sketch to TikZ</h2>
-        </div>
-        <div class="user">
-          <router-link to="/login" class="log">登录</router-link>
-          <router-link to="/register" class="res">注册</router-link>
-        </div>
-      </div>
-    </div>
-    
     <!-- 主体内容 -->
-    <div class="bd">
-      <div class="wrapper">
+    <div class="main-content">
+      <div class="bd">
+        <div class="wrapper">
         <div class="left">
           <!-- 左侧：草图绘制区域 -->
           <div class="lleft">
@@ -117,6 +105,7 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>

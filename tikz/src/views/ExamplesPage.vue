@@ -1,21 +1,9 @@
 <template>
   <div class="examples-page">
-    <!-- 头部 -->
-    <div class="header">
-      <div class="wrapper">
-        <div class="logo">
-          <h2>示例库</h2>
-        </div>
-        <div class="user">
-          <router-link to="/login" class="log">登录</router-link>
-          <router-link to="/register" class="res">注册</router-link>
-        </div>
-      </div>
-    </div>
-    
     <!-- 主体内容 -->
-    <div class="bd">
-      <div class="wrapper">
+    <div class="main-content">
+      <div class="bd">
+        <div class="wrapper">
         <div class="content-area">
           <div class="content-header">
             <h1>TikZ 示例库</h1>
@@ -82,18 +70,6 @@
             <h3>TikZ 示例库</h3>
             <div class="content">模板与示例</div>
           </div>
-          <div class="categories">
-            <h4>热门分类</h4>
-            <ul>
-              <li v-for="category in categories" :key="category.id" 
-                  :class="{active: selectedCategory === category.id}"
-                  @click="selectCategory(category.id)">
-                <span class="category-icon">{{ category.icon }}</span>
-                <span class="category-name">{{ category.name }}</span>
-                <span class="category-count">{{ category.count }}</span>
-              </li>
-            </ul>
-          </div>
           <div class="bottom">
             <ul>
               <li>
@@ -120,6 +96,7 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -640,7 +617,7 @@ export default {
 }
 
 .examples-page .right .bottom {
-  margin-top: auto;
+  /* 移除了 margin-top: auto，防止导航栏被推到最下面 */
 }
 
 .examples-page .right .bottom ul {

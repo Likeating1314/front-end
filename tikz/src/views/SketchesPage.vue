@@ -1,21 +1,9 @@
 <template>
   <div class="sketches-page">
-    <!-- 头部 -->
-    <div class="header">
-      <div class="wrapper">
-        <div class="logo">
-          <h2>我的草稿箱</h2>
-        </div>
-        <div class="user">
-          <router-link to="/login" class="log">登录</router-link>
-          <router-link to="/register" class="res">注册</router-link>
-        </div>
-      </div>
-    </div>
-    
     <!-- 主体内容 -->
-    <div class="bd">
-      <div class="wrapper">
+    <div class="main-content">
+      <div class="bd">
+        <div class="wrapper">
         <div class="content-area">
           <div class="content-header">
             <h1>我的草图</h1>
@@ -60,20 +48,6 @@
             <h3>我的草稿箱</h3>
             <div class="content">草图管理</div>
           </div>
-          <div class="stats">
-            <div class="stat-item">
-              <span class="stat-number">{{ sketches.length }}</span>
-              <span class="stat-label">总草图数</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">{{ completedSketches }}</span>
-              <span class="stat-label">已完成</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">{{ recentSketches }}</span>
-              <span class="stat-label">最近7天</span>
-            </div>
-          </div>
           <div class="bottom">
             <ul>
               <li>
@@ -100,6 +74,7 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -133,14 +108,7 @@ export default {
       )
     })
     
-    const completedSketches = computed(() => {
-      return sketches.value.filter(sketch => sketch.status === 'completed').length
-    })
-    
-    const recentSketches = computed(() => {
-      // 模拟最近7天的草图数
-      return sketches.value.filter((sketch, index) => index < 3).length
-    })
+
     
     // 方法
     const viewSketch = (sketch) => {
@@ -167,8 +135,6 @@ export default {
       sketches,
       searchQuery,
       filteredSketches,
-      completedSketches,
-      recentSketches,
       viewSketch,
       editSketch,
       deleteSketch

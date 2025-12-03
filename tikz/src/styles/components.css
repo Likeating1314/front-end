@@ -1,0 +1,348 @@
+/* 导航栏组件样式 */
+.navbar {
+  background-color: #2c3e50;
+  color: white;
+  padding: 15px 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+/* 主内容区域调整，避免被固定导航栏遮挡 */
+.main-content {
+  padding-top: 80px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 确保页面内容全铺满 */
+.home-page,
+.sketches-page,
+.examples-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 调整内容区域宽度，使其全铺满 */
+.bd {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  flex: 1;
+  display: flex;
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  transition: opacity 0.3s;
+}
+
+.nav-brand:hover {
+  opacity: 0.9;
+}
+
+.brand-text {
+  color: white;
+}
+
+.brand-highlight {
+  color: #3498db;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
+.router-link-active {
+  background-color: rgba(255,255,255,0.1);
+}
+
+.nav-user {
+  margin-left: 10px;
+  padding: 8px 12px;
+  background-color: rgba(52, 152, 219, 0.2);
+  border-radius: 4px;
+}
+
+/* 认证页面样式 */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 160px);
+  padding: 20px;
+}
+
+.auth-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  padding: 40px;
+  width: 100%;
+  max-width: 450px;
+}
+
+.auth-title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #2c3e50;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.forgot-password {
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.forgot-password:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+.terms-link {
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.terms-link:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 25px;
+  color: #666;
+}
+
+.auth-footer a {
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.auth-footer a:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+/* 主页面样式 */
+.home-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-page .main-content {
+  flex: 1;
+}
+
+.bd {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.wrapper {
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0 20px;
+}
+
+.lleft, .lright {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+
+/* 草图上传区域样式 */
+.sketch-area {
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin: 20px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.sketch-area:hover {
+  border-color: #3498db;
+  background-color: rgba(52,152,219,0.05);
+}
+
+.upload-prompt {
+  color: #666;
+}
+
+.upload-prompt .iconfont {
+  font-size: 48px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.sketch-preview {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.transparent-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* 文本区域样式 */
+textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 120px;
+  transition: border-color 0.3s;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52,152,219,0.2);
+}
+
+/* 代码区域样式 */
+.tikz pre {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* 空状态样式 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: #999;
+}
+
+.empty-state .iconfont {
+  font-size: 48px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* 页脚样式 */
+.app-footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+  color: #666;
+  margin-top: auto;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .auth-card {
+    padding: 30px 20px;
+  }
+  
+  .nav-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .nav-menu {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .lleft, .lright {
+    padding: 15px;
+  }
+  
+  .form-options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}

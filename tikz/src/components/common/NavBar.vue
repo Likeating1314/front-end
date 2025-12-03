@@ -29,8 +29,8 @@ export default {
     const router = useRouter()
     const authStore = useAuthStore()
     
-    const isLoggedIn = computed(() => authStore.isLoggedIn)
-    const username = computed(() => authStore.username)
+    const isLoggedIn = computed(() => !!authStore.isLoggedIn)
+    const username = computed(() => authStore.username || '')
     
     const logout = () => {
       if (confirm('确定要退出登录吗？')) {

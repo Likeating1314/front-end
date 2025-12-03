@@ -1,10 +1,12 @@
 <template>
   <div id="app">
     <!-- 导航栏组件 -->
-    <!-- <NavBar v-if="showNav" /> -->
+    <NavBar v-if="showNav" class="fixed-nav" />
     
     <!-- 路由视图 -->
-    <router-view />
+    <div class="main-content">
+      <router-view />
+    </div>
     
     <!-- 页脚 -->
     <footer class="app-footer" v-if="showNav">
@@ -44,6 +46,21 @@ export default {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.fixed-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 60px;
 }
 
 .app-footer {
