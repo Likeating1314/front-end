@@ -1,0 +1,65 @@
+{
+  "id": "5076619",
+  "name": "字体图标",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "765262",
+      "name": "首页",
+      "font_class": "shouye",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "765287",
+      "name": "完成",
+      "font_class": "shouye1",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "765544",
+      "name": "订单",
+      "font_class": "shouye2",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "33987008",
+      "name": "关注-置灰",
+      "font_class": "guanzhu-zhihui",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "34452757",
+      "name": "business-icon-Alibaba.com Online Trade Show",
+      "font_class": "a-business-icon-AlibabacomOnlineTradeShow",
+      "unicode": "e822",
+      "unicode_decimal": 59426
+    },
+    {
+      "icon_id": "34452789",
+      "name": "cart-full-fill",
+      "font_class": "cart-full-fill",
+      "unicode": "e826",
+      "unicode_decimal": 59430
+    },
+    {
+      "icon_id": "34452795",
+      "name": "cart-search",
+      "font_class": "cart-search",
+      "unicode": "e827",
+      "unicode_decimal": 59431
+    },
+    {
+      "icon_id": "34452840",
+      "name": "editor-left-alignment",
+      "font_class": "editor-left-alignment",
+      "unicode": "e82a",
+      "unicode_decimal": 59434
+    }
+  ]
+}

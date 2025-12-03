@@ -1,0 +1,47 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 5076619 */
+  src: url('iconfont.woff2?t=1764708546863') format('woff2'),
+       url('iconfont.woff?t=1764708546863') format('woff'),
+       url('iconfont.ttf?t=1764708546863') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-shouye:before {
+  content: "\e612";
+}
+
+.icon-shouye1:before {
+  content: "\e614";
+}
+
+.icon-shouye2:before {
+  content: "\e626";
+}
+
+.icon-guanzhu-zhihui:before {
+  content: "\e61e";
+}
+
+.icon-a-business-icon-AlibabacomOnlineTradeShow:before {
+  content: "\e822";
+}
+
+.icon-cart-full-fill:before {
+  content: "\e826";
+}
+
+.icon-cart-search:before {
+  content: "\e827";
+}
+
+.icon-editor-left-alignment:before {
+  content: "\e82a";
+}
+
