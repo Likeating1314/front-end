@@ -37,6 +37,11 @@
                 @input="updateDescription"
               ></textarea>
             </div>
+            <div class="button-container">
+              <button @click="generateTikZ" :disabled="!graphDescription || isGenerating">
+                {{ isGenerating ? '生成中...' : 'Tizify - 生成TikZ代码与示例图' }}
+              </button>
+            </div>
           </div>
           
           <!-- 中间：代码生成区域 -->
@@ -66,9 +71,7 @@
                 </div>
               </div>
             </div>
-            <button @click="generateTikZ" :disabled="!graphDescription">
-              {{ isGenerating ? '生成中...' : '生成TikZ代码与示例图' }}
-            </button>
+
           </div>
         </div>
         
@@ -244,6 +247,14 @@ a {
   text-decoration: none;
 }
 
+/* 通用容器样式（统一底层风格） */
+.common-container {
+  background-color: #fff;
+  border: 2px solid #e2e2e2;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
 /* HomePage 特定样式 */
 .header {
   height: 80px;
@@ -316,45 +327,71 @@ a {
   border-radius: 0px 10px 10px 0px;
 }
 
-.bd .left {
-  width: 1400px;
-  height: 700px;
+/* 主体布局调整 */
+.home-page {
   display: flex;
-  background-color: #e2e2e2d2;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  background-color: #f5f5f5;
+}
+
+.bd {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: auto;
+  gap: 10px;
+  padding: 10px;
+}
+
+.bd .left {
+  flex: 1;
+  display: flex;
+  overflow: auto;
+  box-sizing: border-box;
+  min-height: 0;
+  max-width: 100%;
 }
 
 .bd .lleft {
-  flex: 3;
+  flex: 0 0 45%;
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  height: auto;
+  min-height: 500px;
 }
 
+/* 左侧草图区：自适应高度 */
 .bd .lleft .top {
-  flex: 2;
-  background-color: #fff;
-  border-radius: 10px;
-  margin: 10px;
-  border: #e2e2e2 solid 4px;
+  margin: 0 10px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
+  min-height: 200px;
+  max-height: calc(100% - 100px);
 }
 
 .bd .lleft .top h4 {
   display: block;
-  height: 100px;
-  font-size: 22px;
-  line-height: 100px;
-  margin: 15px;
-  margin-top: 5px;
-  border-bottom: #e2e2e2 solid 1px;
+  height: 40px;
+  font-size: 18px;
+  line-height: 40px;
+  margin: 0 0 15px 0;
+  border-bottom: 1px solid #e2e2e2;
+  color: #1f67ee;
 }
 
 .sketch-area {
   position: relative;
-  width: 450px;
-  height: 270px;
-  margin: 0 auto;
-  border: #e2e2e2 dashed 2px;
+  width: 100%;
+  max-width: 450px;
+  height: 220px;
+  margin: 0 auto 15px;
+  border: 2px dashed #e2e2e2;
   border-radius: 8px;
   cursor: pointer;
   display: flex;
@@ -399,13 +436,14 @@ a {
 
 .bd .lleft .top ul {
   display: flex;
-  margin-top: auto;
-  padding: 10px;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
 }
 
 .bd .lleft .top li {
   flex: 1;
-  margin: 10px;
+  margin: 0;
 }
 
 .bd .lleft .top button {
@@ -424,56 +462,74 @@ a {
   background-color: #1557c8;
 }
 
+/* 图形描述区：自适应高度 */
 .bd .lleft .buttom {
   flex: 1;
-  background-color: #fff;
-  margin: 10px;
-  margin-top: 0;
-  border: #e2e2e2 solid 4px;
-  border-radius: 10px;
+  margin: 0 10px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
+  min-height: 0;
 }
 
 .bd .lleft .buttom h4 {
   display: block;
-  margin-top: 15px;
-  margin-left: 15px;
-  font-size: 22px;
+  height: 40px;
+  font-size: 18px;
+  line-height: 40px;
+  margin: 0 0 10px 0;
+  border-bottom: 1px solid #e2e2e2;
+  color: #1f67ee;
 }
 
 .bd .lleft .buttom p {
   display: block;
-  margin-top: 10px;
-  margin-left: 15px;
+  margin: 0 0 8px 0;
   color: #666;
   font-size: 14px;
+  line-height: 1.4;
 }
 
+/* 描述框：固定高度，禁止溢出，添加滚动 */
 .bd .lleft .buttom textarea {
-  display: block;
-  margin: 15px;
-  border: #e2e2e2 solid 2px;
-  border-radius: 10px;
-  width: calc(100% - 30px);
-  height: 70px;
+  flex: none; /* 取消弹性伸缩 */
+  height: 140px; /* 精确高度，适配父容器 */
+  width: 100%;
+  margin: 0;
+  border: 2px solid #e2e2e2;
+  border-radius: 8px;
   outline: none;
   padding: 10px;
   font-size: 14px;
-  resize: none;
+  resize: none; /* 禁止调整大小，避免溢出 */
   font-family: inherit;
+  overflow-y: auto; /* 内容过多时显示垂直滚动条 */
+  transition: border-color 0.3s;
 }
 
+.bd .lleft .buttom textarea:focus {
+  border-color: #1f67ee;
+  box-shadow: 0 0 0 2px rgba(31, 103, 238, 0.1);
+}
+
+/* 右侧代码区 */
 .bd .lright {
-  flex: 4;
-  margin: 10px;
+  flex: 0 0 55%;
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  min-height: 400px;
+  padding: 0 10px;
+  overflow: visible;
+  max-height: calc(100vh - 100px);
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #e2e2e2;
 }
 
 .bd .lright .top {
   height: 40px;
-  border-bottom: #e2e2e2 solid 2px;
+  border-bottom: 2px solid #e2e2e2;
 }
 
 .bd .lright .top ul {
@@ -485,10 +541,10 @@ a {
   width: 100px;
   text-align: center;
   line-height: 40px;
-  border-radius: 10px 10px 0 0;
+  border-radius: 8px 8px 0 0;
   font-size: 16px;
-  background-color: #dbdbdb;
-  color: #ada9a9;
+  background-color: #f5f5f5;
+  color: #666;
   cursor: pointer;
   border: none;
   text-decoration: none;
@@ -497,38 +553,47 @@ a {
 .bd .lright .top ul li a:hover,
 .bd .lright .top ul li a.active {
   background-color: #fff;
-  border-bottom: #1f67ee solid 2px;
-  border-left: #1f67ee solid 2px;
+  border-bottom: 2px solid #1f67ee;
+  border-left: 2px solid #e2e2e2;
+  border-right: 2px solid #e2e2e2;
+  border-top: 2px solid #1f67ee;
   color: #1f67ee;
+  margin-bottom: -2px;
 }
 
 .bd .lright .content {
   flex: 1;
-  background-color: #fff;
-  margin-top: 10px;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  margin: 0;
+  padding: 15px;
   display: flex;
   flex-direction: column;
+  min-height: 100px;
+  overflow: auto;
+  max-height: calc(100% - 120px);
+  flex-basis: 0;
 }
 
 .bd .lright .content h4 {
   display: block;
-  padding: 15px;
-  font-weight: 400;
+  padding: 0 0 10px 0;
+  margin: 0 0 15px 0;
+  font-weight: 500;
   border-bottom: 1px solid #e2e2e2;
+  color: #1f67ee;
 }
 
 .bd .lright .content .tikz,
 .bd .lright .content .example-image {
   flex: 1;
-  margin: 15px;
-  margin-top: 0;
-  padding: 25px 10px;
+  margin: 0;
+  padding: 15px;
   background-color: #010624;
-  border-radius: 10px;
+  border-radius: 8px;
   overflow: auto;
   color: #fff;
+  max-width: 100%;
+  box-sizing: border-box;
+  word-break: break-all;
 }
 
 .bd .lright .content .tikz pre {
@@ -559,41 +624,66 @@ a {
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 .image-container img {
   max-width: 100%;
   max-height: 100%;
+  width: auto;
+  height: auto;
   border-radius: 5px;
+  border: 1px solid #333;
+  object-fit: contain;
 }
 
-.bd .lright button {
-  display: block;
+.button-container {
+  margin: 0 10px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f7ff;
+  border-radius: 8px;
+}
+
+.button-container button {
   width: 100%;
+  max-width: 400px;
   height: 50px;
-  border: none;
-  border-radius: 5px;
   background-color: #1f67ee;
   color: white;
-  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
 }
 
-.bd .lright button:hover:not(:disabled) {
+.button-container button:hover:not(:disabled) {
   background-color: #1557c8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(31, 103, 238, 0.3);
 }
 
-.bd .lright button:disabled {
+.button-container button:disabled {
   background-color: #a0aec0;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
+/* 右侧边栏 */
 .bd .right {
   width: 200px;
   background-color: #1f67ee;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .bd .right .top {
@@ -602,45 +692,51 @@ a {
   flex-direction: column;
   align-items: center;
   padding-top: 15px;
+  background-color: #1557c8;
 }
 
 .bd .right .logo {
   height: 40px;
-    width: 200px;
-    font-size: 0;
-    color: #fff;
-    background: url(./logo1.png) no-repeat center center;
-    background-size: 50%;
-    margin-top: 10px;
-    margin-bottom: 5px;
+  width: 200px;
+  font-size: 0;
+  color: #fff;
+  background: url(./logo1.png) no-repeat center center;
+  background-size: 50%;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 .bd .right h3 {
-  color: #e7e7e7;
+  color: #fff;
   text-align: center;
-  font-weight: 400;
+  font-weight: 500;
+  font-size: 18px;
 }
 
 .bd .right .content {
-  color: #e7e7e7;
+  color: #f0f7ff;
   text-align: center;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .bd .right .bottom {
   flex: 1;
+  padding: 10px 0;
 }
 
 .bd .right .bottom ul {
   display: flex;
   flex-direction: column;
+  gap: 5px;
 }
 
 .bd .right .bottom li {
-  height: 60px;
+  height: 50px;
   display: flex;
   align-items: center;
-  padding-left: 15px;
+  padding-left: 20px;
+  border-radius: 6px;
+  margin: 0 10px;
 }
 
 .bd .right .bottom li a {
@@ -653,20 +749,20 @@ a {
 
 .bd .right .bottom li span {
   font-size: 18px;
-  color: #e7e7e7;
+  color: #f0f7ff;
   display: inline-block;
   margin-right: 15px;
 }
 
 .bd .right .bottom li i {
   font-style: normal;
-  color: #e7e7e7;
+  color: #f0f7ff;
   font-size: 16px;
 }
 
 .bd .right .bottom li.active,
 .bd .right .bottom li:hover {
-  background-color: #62aeec;
+  background-color: rgba(255,255,255,0.2);
 }
 
 /* 响应式设计 */
@@ -675,9 +771,25 @@ a {
     flex-direction: column;
   }
   
+  .bd {
+    flex-direction: column;
+  }
+  
   .bd .left {
     flex-direction: column;
     height: auto;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  
+  .bd .lleft .top,
+  .bd .lleft .buttom {
+    height: auto; /* 响应式下自动高度 */
+    margin-bottom: 10px;
+  }
+  
+  .bd .lleft .buttom textarea {
+    height: 120px;
   }
   
   .bd .right {
@@ -716,7 +828,8 @@ a {
   
   .sketch-area {
     width: 100%;
-    max-width: 450px;
+    max-width: none;
+    height: 200px;
   }
 }
 </style>

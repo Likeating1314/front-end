@@ -44,8 +44,10 @@ export default {
 /* 全局样式 */
 #app {
   min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .fixed-nav {
@@ -56,11 +58,14 @@ export default {
   z-index: 1000;
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 60px;
 }
 
 .main-content {
   flex: 1;
   padding-top: 60px;
+  overflow: hidden;
+  height: calc(100vh - 60px);
 }
 
 .app-footer {

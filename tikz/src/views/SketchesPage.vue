@@ -1,10 +1,9 @@
 <template>
   <div class="sketches-page">
     <!-- 主体内容 -->
-    <div class="main-content">
-      <div class="bd">
-        <div class="wrapper">
-        <div class="content-area">
+    <div class="bd">
+      <div class="wrapper">
+      <div class="content-area">
           <div class="content-header">
             <h1>我的草图</h1>
             <div class="search-bar">
@@ -74,7 +73,6 @@
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -145,6 +143,17 @@ export default {
 
 <style scoped>
 /* 复用 HomePage 的基础样式 */
+.sketches-page {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.sketches-page .bd {
+  margin-top: 0;
+  padding-top: 0;
+  min-height: calc(100vh - 60px);
+}
+
 .sketches-page .header {
   height: 80px;
   background-color: #e7e7e7;
@@ -215,19 +224,13 @@ export default {
   border-radius: 0px 10px 10px 0px;
 }
 
-.sketches-page .bd {
-  background-color: #f5f5f5;
-  min-height: calc(100vh - 80px);
-}
+.sketches-page .bd {  display: flex;  width: 100%;  background-color: #f5f5f5;  margin-top: 0;}
 
 .sketches-page .wrapper {
   display: flex;
 }
 
-.sketches-page .content-area {
-  flex: 1;
-  padding: 20px;
-}
+.sketches-page .content-area {  flex: 1;  padding: 0 20px 20px;  margin-right: 10px;}
 
 .content-header {
   display: flex;
@@ -275,7 +278,7 @@ export default {
 
 .sketches-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
 }
 
@@ -293,7 +296,7 @@ export default {
 }
 
 .sketch-preview {
-  height: 180px;
+  height: 150px;
   background: linear-gradient(135deg, #f0f7ff, #e2e2e2);
   display: flex;
   flex-direction: column;
@@ -320,7 +323,7 @@ export default {
 }
 
 .sketch-info {
-  padding: 20px;
+  padding: 15px;
 }
 
 .sketch-info h3 {
@@ -351,11 +354,11 @@ export default {
 }
 
 .sketch-actions {
-  padding: 15px 20px;
+  padding: 10px 15px;
   background-color: #f8f9fa;
   border-top: 1px solid #e2e2e2;
   display: flex;
-  gap: 10px;
+  gap: 5px;
 }
 
 .btn-view, .btn-edit, .btn-delete {
@@ -430,19 +433,9 @@ export default {
 }
 
 /* 右侧边栏 */
-.sketches-page .right {
-  width: 200px;
-  background-color: #1f67ee;
-  display: flex;
-  flex-direction: column;
-}
+.sketches-page .right {  width: 200px;  background-color: #1f67ee;  border-radius: 10px;  box-shadow: 0 2px 8px rgba(0,0,0,0.15);  display: flex;  flex-direction: column;  overflow: hidden;}
 
-.sketches-page .right .top {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+.sketches-page .right .top {  height: 120px;  display: flex;  flex-direction: column;  align-items: center;  padding-top: 15px;  background-color: #1557c8;}
 
 .sketches-page .right .logo {
   height: 40px;

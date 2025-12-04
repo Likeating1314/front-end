@@ -1,9 +1,8 @@
 <template>
   <div class="examples-page">
     <!-- 主体内容 -->
-    <div class="main-content">
-      <div class="bd">
-        <div class="wrapper">
+    <div class="bd">
+      <div class="wrapper">
         <div class="content-area">
           <div class="content-header">
             <h1>TikZ 示例库</h1>
@@ -96,7 +95,6 @@
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -230,7 +228,18 @@ export default {
 </script>
 
 <style scoped>
-/* 复用基础样式 */
+/* 复用 HomePage 的基础样式 */
+.examples-page {
+  margin-top: -60px;
+  padding-top: 60px;
+}
+
+.examples-page .bd {
+  margin-top: 0;
+  padding-top: 0;
+  min-height: calc(100vh - 60px);
+}
+
 .examples-page .header {
   height: 80px;
   background-color: #e7e7e7;
@@ -349,8 +358,8 @@ export default {
 
 .examples-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
 }
 
 .example-card {
@@ -367,7 +376,7 @@ export default {
 }
 
 .example-preview {
-  height: 200px;
+  height: 150px;
   background: linear-gradient(135deg, #f0f7ff, #e2e2e2);
   display: flex;
   flex-direction: column;
@@ -406,7 +415,7 @@ export default {
 }
 
 .example-info {
-  padding: 20px;
+  padding: 15px;
 }
 
 .example-info h3 {
@@ -416,18 +425,18 @@ export default {
 }
 
 .example-info p {
-  margin: 0 0 15px 0;
+  margin: 0 0 10px 0;
   color: #666;
   font-size: 14px;
-  line-height: 1.5;
-  min-height: 60px;
+  line-height: 1.4;
+  min-height: 42px;
 }
 
 .example-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .tag {
@@ -442,31 +451,32 @@ export default {
   display: flex;
   justify-content: space-between;
   color: #888;
-  font-size: 12px;
+  font-size: 11px;
+  margin-bottom: 8px;
 }
 
 .example-stats .stat {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 3px;
 }
 
 .example-actions {
-  padding: 15px 20px;
+  padding: 8px 12px;
   background-color: #f8f9fa;
   border-top: 1px solid #e2e2e2;
   display: flex;
-  gap: 10px;
+  gap: 4px;
 }
 
 .btn-preview, .btn-use, .btn-download {
   flex: 1;
-  padding: 10px 0;
+  padding: 8px 0;
   border: none;
-  border-radius: 4px;
+  border-radius: 3px;
   cursor: pointer;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .btn-preview {
@@ -532,15 +542,20 @@ export default {
 .examples-page .right {
   width: 200px;
   background-color: #1f67ee;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .examples-page .right .top {
-  padding: 20px;
+  height: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 15px;
+  background-color: #1557c8;
 }
 
 .examples-page .right .logo {
@@ -565,6 +580,10 @@ export default {
   color: #e7e7e7;
   text-align: center;
   font-size: 12px;
+}
+
+.examples-page .right .bottom {
+  flex: 1;
 }
 
 .categories {
@@ -623,6 +642,39 @@ export default {
 .examples-page .right .bottom ul {
   display: flex;
   flex-direction: column;
+}
+
+.examples-page .right .bottom li {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.examples-page .right .bottom li a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.examples-page .right .bottom li span {
+  font-size: 18px;
+  color: #e7e7e7;
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.examples-page .right .bottom li i {
+  font-style: normal;
+  color: #e7e7e7;
+  font-size: 16px;
+}
+
+.examples-page .right .bottom li.active,
+.examples-page .right .bottom li:hover {
+  background-color: #62aeec;
 }
 
 .examples-page .right .bottom li {

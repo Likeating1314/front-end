@@ -1,8 +1,14 @@
-/* 重置和基础样式 */
+/* 全局重置 */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* 确保所有内容不超出屏幕宽度 */
+body {
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
